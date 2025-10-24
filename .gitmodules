@@ -1,0 +1,3 @@
+[submodule "rpgmaker"]
+	path = rpgmaker
+	url = https://github.com/SomeRanDev/someran.dev-rpgmaker.git

@@ -24,15 +24,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Create `public/` Folder
-        run: mkdir public
+        run: |
+          mkdir public
+          mkdir public/test
 
       - name: Copy Main Page to `public/`
         run: cp ./index.html ./public/index.html
+
+      - name: Copy Main Page to `public/`
+        run: cp ./rpgmaker/README.md ./public/test/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
