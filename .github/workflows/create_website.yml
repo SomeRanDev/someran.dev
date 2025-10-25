@@ -22,6 +22,9 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      # ---------------------------------
+      # Setup
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -29,6 +32,14 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
+      - name: Install Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      # ---------------------------------
+      # someran.dev
 
       - name: Create `public/` Folder
         run: |
@@ -38,8 +49,22 @@ jobs:
       - name: Copy Main Page to `public/`
         run: cp ./index.html ./public/index.html
 
-      - name: Copy Main Page to `public/`
-        run: cp ./rpgmaker/README.md ./public/test/index.html
+      # ---------------------------------
+      # someran.dev/rpgmaker
+
+      - name: Install RPG Maker Website Dependencies
+        run: deno install
+        working-directory: "rpgmaker"
+
+      - name: Build RPG Maker Website
+        run: deno run start
+        working-directory: "rpgmaker"
+
+      - name: Copy RPG Maker Website to `public/`
+        run: cp -a ./rpgmaker/public/. ./public/rpgmaker/
+
+      # ---------------------------------
+      # Upload website
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
