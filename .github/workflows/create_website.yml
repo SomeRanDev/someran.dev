@@ -41,13 +41,26 @@ jobs:
       # ---------------------------------
       # someran.dev
 
-      - name: Create `public/` Folder
-        run: |
-          mkdir public
-          mkdir public/test
-
       - name: Copy Main Page to `public/`
         run: cp ./index.html ./public/index.html
+
+      # ---------------------------------
+      # someran.dev/links
+
+      - name: Install Links Dependencies
+        run: deno install
+        working-directory: "links"
+
+      - name: Generate Links HTML File
+        run: deno run generate_html
+        working-directory: "links"
+
+      - name: Build Links Site
+        run: deno run build
+        working-directory: "links"
+
+      - name: Copy Links Page to `public/`
+        run: cp -a ./links/dist/. ./public/links/
 
       # ---------------------------------
       # someran.dev/rpgmaker
