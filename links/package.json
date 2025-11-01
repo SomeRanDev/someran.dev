@@ -5,21 +5,13 @@
 	"type": "module",
 	"scripts": {
 		"start": "npm run dev",
-		"build": "npm run lint && tsc && vite build",
-		"lint": "eslint .",
+		"build": "deno run build_sass && tsc && vite build",
 		"dev": "vite",
 		"generate_html": "deno run --allow-read --allow-write tools/GenerateIndexHtml.ts index-template.html index.html",
 		"build_sass": "sass sass:public/css",
 		"watch_sass": "sass --watch sass:public/css"
 	},
-	"dependencies": {
-		"pixi.js": "^8.8.1"
-	},
 	"devDependencies": {
-		"@eslint/js": "^9.21.0",
-		"eslint": "^9.21.0",
-		"eslint-config-prettier": "^10.1.2",
-		"eslint-plugin-prettier": "^5.2.6",
 		"prettier": "^3.5.3",
 		"sass": "^1.93.3",
 		"typescript": "~5.7.3",
