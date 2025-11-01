@@ -1,0 +1,74 @@
+body
+	background: #0f0f0f
+	color: #fff
+	font-family: system-ui, sans-serif
+	display: flex
+	flex-direction: column
+	align-items: center
+	margin: 0
+
+.page-padding
+	padding: 0px 40px 40px 40px
+
+.title
+	display: flex
+	flex-direction: column
+	margin-top: 30px
+	margin-bottom: 30px
+	gap: 12px
+
+	h1
+		padding: 0
+		margin: 0
+		font-size: 3em
+		color: white
+		text-align: center
+		//background: linear-gradient(33deg, #ff6cae, #ad36fc, #7543e9, #4361ee, #a7eaff)
+		// -webkit-background-clip: text
+		// -webkit-text-fill-color: transparent
+		animation: hue 1s infinite linear
+		text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000
+
+	.subtext
+		text-align: center
+		font-size: 1.1em
+		color: rgba(255, 255, 255, 0.75)
+
+section
+	margin: 25px 0
+	width: 100%
+	max-width: 500px
+
+h2
+	margin-bottom: 15px
+	font-size: 1.4em
+	text-align: center
+	opacity: 0.8
+
+.links
+	display: grid
+	gap: 10px
+
+a
+	text-decoration: none
+	color: white
+	//background: linear-gradient(135deg, #3a0ca3, #7209b7, #f72585)
+	padding: 14px
+	border-radius: 10px
+	text-align: center
+	font-weight: 600
+
+@keyframes hue
+	0%
+		filter: hue-rotate(0deg)
+
+	100%
+		filter: hue-rotate(360deg)
+
+.contact
+	text-align: center
+	margin-top: 40px
+
+	a
+		background: #222
+		border: 1px solid #555

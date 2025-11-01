@@ -1,0 +1,69 @@
+// https://codepen.io/t_afif/pen/poKrBRo
+	
+@property --a
+	syntax: '<angle>'
+	inherits: true
+	initial-value: 0deg
+
+@property --p
+	syntax: '<percentage>'
+	inherits: true
+	initial-value: 0%
+
+@property --c1
+	syntax: '<color>'
+	inherits: true
+	initial-value: #000
+
+@property --c2
+	syntax: '<color>'
+	inherits: true
+	initial-value: #000
+
+.background
+	width: 100%
+	display: flex
+	flex-direction: column
+	justify-content: center
+	align-items: center
+	--s:80px
+	--_g:#0000, var(--c1) 2deg calc(var(--a) - 2deg), #0000 var(--a)
+	background: conic-gradient(from calc(-45deg	- var(--a)/2) at top var(--p) left var(--p), var(--_g)), conic-gradient(from calc(-45deg	- var(--a)/2) at top var(--p) left var(--p), var(--_g)), conic-gradient(from calc( 45deg	- var(--a)/2) at top var(--p) right var(--p), var(--_g)), conic-gradient(from calc( 45deg	- var(--a)/2) at top var(--p) right var(--p), var(--_g)), conic-gradient(from calc(-135deg - var(--a)/2) at bottom var(--p) left var(--p), var(--_g)), conic-gradient(from calc(-135deg - var(--a)/2) at bottom var(--p) left var(--p), var(--_g)), conic-gradient(from calc( 135deg - var(--a)/2) at bottom var(--p) right var(--p), var(--_g)), conic-gradient(from calc( 135deg - var(--a)/2) at bottom var(--p) right var(--p), var(--_g)) var(--c2)
+	background-size: calc(2*var(--s)) calc(2*var(--s))
+
+	animation-name: m
+	animation-delay: 0s
+	animation-duration: 2s
+	animation-direction: alternate
+	animation-iteration-count: infinite
+	animation-timing-function: linear
+	animation-fill-mode: forwards
+
+@keyframes m
+	0%,15%
+		--a:135deg
+		--p:20%
+		--c1:#121313
+		--c2:#242424
+		background-position: 0 0, var(--s) var(--s)
+
+	45%
+		--a:90deg
+		--p:25%
+		--c1:#121313
+		--c2:#242424
+		background-position: 0 0, var(--s) var(--s)
+
+	55%
+		--a:90deg
+		--p:25%
+		--c1:#121313
+		--c2:#242424
+		background-position: var(--s) 0, 0 var(--s)
+
+	85%,100%
+		--a:135deg
+		--p:20%
+		--c1:#121313
+		--c2:#242424
+		background-position: var(--s) 0, 0 var(--s)
