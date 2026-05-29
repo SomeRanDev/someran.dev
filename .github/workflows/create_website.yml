@@ -77,6 +77,12 @@ jobs:
         run: cp -a ./rpgmaker/public/. ./public/rpgmaker/
 
       # ---------------------------------
+      # someran.dev/streams
+
+      - name: Copy Streams Website to `public/`
+        run: cp -a ./streams/public/. ./public/streams/
+
+      # ---------------------------------
       # Upload website
 
       - name: Upload artifact

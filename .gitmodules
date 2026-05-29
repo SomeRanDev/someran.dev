@@ -1,3 +1,6 @@
 [submodule "rpgmaker"]
 	path = rpgmaker
 	url = https://github.com/SomeRanDev/someran.dev-rpgmaker.git
+[submodule "streams"]
+	path = streams
+	url = https://github.com/SomeRanDev/someran.dev-streams.git
