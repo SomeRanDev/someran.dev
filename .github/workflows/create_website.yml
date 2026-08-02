@@ -26,7 +26,7 @@ jobs:
       # Setup
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           submodules: recursive
 
@@ -81,6 +81,26 @@ jobs:
 
       - name: Copy Streams Website to `public/`
         run: cp -a ./streams/public/. ./public/streams/
+
+      # ---------------------------------
+      # someran.dev/gooblab
+
+      - name: Checkout Gooblab
+        uses: actions/checkout@v7
+        with:
+          repository: "SomeRanDev/GooblerMaker"
+          token: ${{ secrets.GOOBLER_MAKER_ACCESS_TOKEN }}
+          path: "goobler-maker"
+
+      - name: Build Gooblab
+        run: deno task build
+        working-directory: "goobler-maker"
+
+      - name: Make `public/gooblab` Folder
+        run: mkdir ./public/gooblab
+
+      - name: Copy Built Gooblab to `public/`
+        run: cp -a ./goobler-maker/dist/index.html ./public/gooblab/index.html
 
       # ---------------------------------
       # Upload website
