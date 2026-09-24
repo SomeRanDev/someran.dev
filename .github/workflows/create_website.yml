@@ -41,26 +41,44 @@ jobs:
       # ---------------------------------
       # someran.dev
 
-      - name: Copy Main Page to `public/`
-        run: cp ./index.html ./public/index.html
+      - name: Checkout Main
+        uses: actions/checkout@v7
+        with:
+          repository: "SomeRanDev/someran.dev-main"
+          token: ${{ secrets.SOMERANDEV_MAIN_ACCESS_TOKEN }}
+          path: "main"
+
+      - name: Install Main Site Build Tools
+        run: npm ci
+        working-directory: "main"
+
+      - name: Build Main Website
+        run: ./scripts/ci_build.sh
+        working-directory: "main"
+
+      - name: Copy Main Site to `public/`
+        run: cp -a ./main/build/. ./public/
+
+      # - name: Copy Main Page to `public/`
+      #   run: cp ./index.html ./public/index.html
 
       # ---------------------------------
       # someran.dev/links
 
-      - name: Install Links Dependencies
-        run: deno install
-        working-directory: "links"
+      # - name: Install Links Dependencies
+      #   run: deno install
+      #   working-directory: "links"
 
-      - name: Generate Links HTML File
-        run: deno run generate_html
-        working-directory: "links"
+      # - name: Generate Links HTML File
+      #   run: deno run generate_html
+      #   working-directory: "links"
 
-      - name: Build Links Site
-        run: deno run build
-        working-directory: "links"
+      # - name: Build Links Site
+      #   run: deno run build
+      #   working-directory: "links"
 
-      - name: Copy Links Page to `public/`
-        run: cp -a ./links/dist/. ./public/links/
+      # - name: Copy Links Page to `public/`
+      #   run: cp -a ./links/dist/. ./public/links/
 
       # ---------------------------------
       # someran.dev/rpgmaker
